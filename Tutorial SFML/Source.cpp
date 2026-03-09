@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+/*#include <SFML/Graphics.hpp>
 
 void main()
 {
@@ -17,5 +17,28 @@ void main()
         window.clear();
         window.draw(shape);
         window.display();
+    }
+}*/
+
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
+#include <iostream>
+#include <string>
+
+#define SERVER_PORT 55000
+const sf::IpAddress SERVER_IP = sf::IpAddress(127, 0, 0, 1);
+
+void main()
+{ 
+	sf::TcpSocket socket;
+	if (socket.connect(SERVER_IP, SERVER_PORT) != sf::Socket::Status::Done)
+	{
+		std::cout << "Connection failed" << std::endl;
+		return;
+	}
+    else
+    {
+		std::cout << "Connected to server" << std::endl;
     }
 }
